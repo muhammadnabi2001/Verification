@@ -27,7 +27,6 @@
                             <button type="submit" class="btn btn-primary">Verify Code</button>
                         </form>
                         @endif
-                        <!-- Xatolik va muvaffaqiyatli xabarlar -->
                         @if(session('error'))
                             <p class="text-red-500 mt-4">{{ session('error') }}</p>
                         @elseif(session('success'))
