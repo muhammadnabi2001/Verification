@@ -56,6 +56,6 @@ class RegisteredUserController extends Controller
         ]);
         Mail::to($user->email)->send(new SendMessages($verificationCode));
         
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('userverify', absolute: false));
     }
 }

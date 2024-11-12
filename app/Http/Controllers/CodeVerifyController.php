@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CodeVerifyController extends Controller
 {
+    public function userverify()
+    {
+        return view('User.userverify');
+    }
     public function check(Request $request)
     {
-        //dd($request->all());
+        //dd(Auth::user()->id);
         $request->validate([
             'code' => 'required|digits:4',
         ]);
@@ -24,7 +28,7 @@ class CodeVerifyController extends Controller
             $user = User::find($userId);
             $user->email_verified_at = now(); 
             $user->save();
-            return redirect()->route('dashboard')->with('success', 'Your verification code is correct!');
+            return view('dashboard')->with('success', 'Your verification code is correct!');
         } else {
             return redirect('dashboard')->with('error', 'Invalid verification code!');
         }

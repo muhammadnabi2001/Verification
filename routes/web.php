@@ -5,6 +5,7 @@ use App\Http\Controllers\KitobController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Check;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,7 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-Route::get('mainpage', [PostController::class, 'main'])->name('mainpage');
+Route::get('mainpage', [PostController::class, 'main'])->name('mainpage')->middleware(Check::class);
 Route::get('post', [PostController::class, 'post'])->name('post')->middleware('can:post');
 Route::get('postcreate', [PostController::class, 'postcreate'])->name('postcreate')->middleware('can:postcreate');
 Route::post('poststore', [PostController::class, 'store'])->name('poststore')->middleware('can:poststore');
@@ -43,3 +44,4 @@ Route::get('usercreate',[UserController::class,'usercreate'])->name('usercreate'
 Route::post('userstore',[UserController::class,'store'])->name('userstore');
 
 Route::post('check',[CodeVerifyController::class,'check'])->name('check');
+Route::get('userverify',[CodeVerifyController::class,'userverify'])->name('userverify');

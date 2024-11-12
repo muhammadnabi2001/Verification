@@ -19,14 +19,7 @@
                         
 
                     <div class="mt-6">
-                        @if(!Auth::user()->email_verified_at)
-                        <h3>Enter your verification code:</h3>
-                        <form action="{{route('check')}}" method="POST">
-                            @csrf
-                            <input type="text" name="code" class="border p-2 mt-2" required placeholder="Enter your 4-digit code">
-                            <button type="submit" class="btn btn-primary">Verify Code</button>
-                        </form>
-                        @endif
+                        
                         @if(session('error'))
                             <p class="text-red-500 mt-4">{{ session('error') }}</p>
                         @elseif(session('success'))
