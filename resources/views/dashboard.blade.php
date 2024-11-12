@@ -16,13 +16,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     
-                    @if(Auth::check() && (Auth::user()->email_verified_at) !=null && session('verified'))
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link :href="route('mainpage')" :active="request()->routeIs('mainpage')">
-                                {{ __('Mainpage') }}
-                            </x-nav-link>
-                        </div>
-                    @endif
+                        
 
                     <div class="mt-6">
                         <h3>Enter your verification code:</h3>

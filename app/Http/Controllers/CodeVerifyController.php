@@ -24,7 +24,7 @@ class CodeVerifyController extends Controller
             $user = User::find($userId);
             $user->email_verified_at = now(); 
             $user->save();
-            return redirect()->route('dashboard')->with('verified', true)->with('success', 'Your verification code is correct!');
+            return redirect()->route('dashboard')->with('success', 'Your verification code is correct!');
         } else {
             return redirect('dashboard')->with('error', 'Invalid verification code!');
         }
